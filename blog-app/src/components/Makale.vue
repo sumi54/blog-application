@@ -1,6 +1,6 @@
 <template>
     <div class="makale">
-        <a><h3>{{ makale.baslik }}</h3></a>
+        <router-link :to="{name:'Detay',params:{id:makale.id}}"><h3>{{ makale.baslik }}</h3></router-link>
     </div>
 </template>
 <script>

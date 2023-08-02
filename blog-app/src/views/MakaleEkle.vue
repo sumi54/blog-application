@@ -28,7 +28,6 @@ export default{
 
       
       const res=collection(db,"makaleler")
-
       await addDoc(res,makale).then(()=>{
        router.push({name:"Home"}) 
       }).catch((err)=>{
