@@ -8,7 +8,7 @@
       <h2>Makale Başlık:{{ makale.baslik }}</h2>
       <div class="content">
         <i>Makale İçerik:</i>
-        <p>{{ makale.icerik }}</p>
+        <p>{{ makale.olusturulmaTarihi }}</p>
       </div>
     </div>
     <div v-else>
