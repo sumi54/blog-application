@@ -1,9 +1,13 @@
-
-
 <template>
-
+    <div class="makale">
+        <a><h3>{{ makale.baslik }}</h3></a>
+    </div>
 </template>
-
+<script>
+export default{
+    props:['makale']
+}
+</script>
 <style>
 
 .makale a{

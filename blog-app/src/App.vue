@@ -1,12 +1,21 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
+
 
 <template>
+  <div>
+      <Navbar></Navbar>
+      <RouterView />
+  </div>
 
-  <RouterView />
 </template>
-
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+import Navbar from './components/Navbar.vue'
+export default{
+  components:{
+    Navbar
+  }
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
