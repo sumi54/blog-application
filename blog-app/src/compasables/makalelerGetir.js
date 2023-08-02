@@ -12,7 +12,7 @@ const makalelerGetir=()=>{
             
             let res = await getDocs(query(
                 collection(db,"makaleler"),
-                orderBy("olusturulmaTarihi","asc")
+                orderBy("olusturulmaTarihi","desc")
                 ));
             makaleler.value=res.docs.map(doc=>{
                 return{...doc.data(),id:doc.id}

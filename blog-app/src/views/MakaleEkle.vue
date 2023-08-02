@@ -1,6 +1,47 @@
 <template>
-
+  <div class="makale-ekle">
+    <form @submit.prevent="makaleEkle">
+      <label>Makale Başlık:</label>
+      <input type="text" id="baslik" name="baslik" v-model="baslik" required>
+      <textarea name="icerik" id="icerik" v-model="icerik" required></textarea>
+      <button>Oluştur</button>
+    </form>
+  </div>
 </template>
+<script>
+import {ref} from 'vue'
+import {db,timestamp} from '../firebase/config.js'
+import {collection,addDoc,doc,setDoc,query} from 'firebase/firestore'
+import {useRouter} from 'vue-router'
+export default{
+  setup(){
+    const baslik=ref('')
+    const icerik=ref('')
+    const router=useRouter()
+
+    const makaleEkle=async ()=>{
+      const makale={
+        baslik:baslik.value,
+        icerik:icerik.value,
+        olusturulmaTarihi:timestamp
+      }
+
+      
+      const res=collection(db,"makaleler")
+
+      await addDoc(res,makale).then(()=>{
+       router.push({name:"Home"}) 
+      }).catch((err)=>{
+        console.log(err.message);
+      })
+
+      
+    }
+    return {baslik,icerik,makaleEkle}
+  }
+
+}
+</script>
 <style>
 .makale-ekle form {
   max-width: 400px;
