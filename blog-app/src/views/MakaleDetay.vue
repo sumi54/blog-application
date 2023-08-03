@@ -14,21 +14,39 @@
     <div v-else>
       Yükleniyor...
     </div>
+    <a class="sil" @click="makaleSil">
+      <h2>
+        <i class="bi bi-trash-fill"></i>
+      </h2>
+
+    </a>
+    
   </div>
 </template>
 
 <script>
-import { useRoute } from 'vue-router';
+import { useRoute,useRouter } from 'vue-router';
 import { ref } from 'vue';
 import makaleGetir from '../compasables/makaleGetir.js'
+import { db } from '../firebase/config';
+import {doc,deleteDoc} from 'firebase/firestore'
+
 export default{
   // props:['id'], id getirmenin 1.yolu
   setup(){ //2.yol
     const route=useRoute();
+    const router=useRouter();
     const id=ref(route.params.id)
     const {makale,hatalar,makaleYukle}=makaleGetir(route.params.id)
     makaleYukle();
-    return {makale,hatalar}
+
+    const makaleSil=async ()=>{
+      let res= doc(db,"makaleler",route.params.id)
+      await deleteDoc(res).then(()=>{
+        router.push('/')
+      })
+    }
+    return {makale,hatalar,makaleSil}
   }
 }
 
@@ -42,10 +60,12 @@ export default{
     }
     .sil{
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 50%;
+      right: 22%;
       border-radius: 50%;
       padding: 8px;
       cursor: pointer;
+      height: 3.4em;
     }
+
 </style>

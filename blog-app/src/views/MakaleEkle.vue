@@ -11,7 +11,7 @@
 <script>
 import {ref} from 'vue'
 import {db,timestamp} from '../firebase/config.js'
-import {collection,addDoc,doc,setDoc,query} from 'firebase/firestore'
+import {collection,addDoc} from 'firebase/firestore'
 import {useRouter} from 'vue-router'
 export default{
   setup(){

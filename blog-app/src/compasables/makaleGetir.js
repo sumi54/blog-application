@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { db } from "../firebase/config";
-import {collection,addDoc,setDoc,query,doc, getDoc} from 'firebase/firestore'
+import {doc, getDoc} from 'firebase/firestore'
 import moment from 'moment'
 const makaleGetir=(id)=>{
     const makale=ref(null);
