@@ -9,10 +9,7 @@
 import Makale from './Makale.vue'
 export default{
     props:['makaleler'],
-    components:{Makale},
-    setup(props){
-        console.log(props.makaleler);
-    }
+    components:{Makale}
 }
 </script>
 <style>

@@ -7,7 +7,7 @@
     <div v-if="makale" class="detay content">
       <h2>Makale Başlık:{{ makale.baslik }}</h2>
       <div class="content">
-        <i>Makale İçerik:</i>
+        <i>Makale Tarihi:</i>
         <p>{{ makale.olusturulmaTarihi }}</p>
       </div>
     </div>
@@ -36,7 +36,6 @@ export default{
   setup(){ //2.yol
     const route=useRoute();
     const router=useRouter();
-    const id=ref(route.params.id)
     const {makale,hatalar,makaleYukle}=makaleGetir(route.params.id)
     makaleYukle();
 

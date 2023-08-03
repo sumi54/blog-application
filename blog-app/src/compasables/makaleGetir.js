@@ -9,20 +9,16 @@ const makaleGetir=(id)=>{
         try {
             const docRef=doc(db,"makaleler",id)
             const docSnap=await getDoc(docRef)
-            // const res=await dbref.doc(id)
            
-               if(!docSnap.exists){
+            if(!docSnap.exists()){
                 throw Error('makale bulunamadı')
             }
             const tarih=docSnap.data().olusturulmaTarihi.toDate();
             const formatlanmısTarih=moment(tarih).format('LL')
-            console.log(formatlanmısTarih);
             makale.value={...docSnap.data(),id:docSnap.id,olusturulmaTarihi:formatlanmısTarih} 
             
-            // let res=await collection(db,'makaleler'.doc(id).get())
-            
         }catch(error){
-            hatalar.value=error.message
+            hatalar.value= error.message
         }
     }
     return{makale,hatalar,makaleYukle}
